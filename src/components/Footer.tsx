@@ -42,24 +42,6 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Company</h3>
             <ul className="space-y-3">
-              {siteConfig.footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link 
-                    to={link.href} 
-                    className="text-gray-300 hover:text-white transition-colors"
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
-            <ul className="space-y-3">
               <li>
                 <Link 
                   to="/about" 
@@ -76,6 +58,67 @@ const Footer = () => {
                   onClick={() => window.scrollTo(0, 0)}
                 >
                   Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6">Legal</h3>
+            <ul className="space-y-3">
+              <li>
+                <Link 
+                  to="/privacy-policy" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms-conditions" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/refund-policy" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/returns-policy" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Returns Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/shipping-policy" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Shipping Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/disclaimer" 
+                  className="text-gray-300 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Disclaimer
                 </Link>
               </li>
             </ul>
@@ -111,23 +154,10 @@ const Footer = () => {
 
         {/* Bottom section */}
         <div className="border-t border-white/10 mt-12 pt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-            <p className="text-gray-300 text-center lg:text-left">
-              © 2024 {siteConfig.name}. All rights reserved.
+          <div className="text-center">
+            <p className="text-gray-300">
+              © 2025 {siteConfig.name}. All rights reserved.
             </p>
-            
-            <div className="flex flex-wrap justify-center lg:justify-end space-x-6">
-              {siteConfig.footerLinks.legal.map((link) => (
-                <Link 
-                  key={link.name}
-                  to={link.href} 
-                  className="text-gray-300 hover:text-white text-sm transition-colors"
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </div>

@@ -15,11 +15,11 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left column - Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8">
             {/* Trust badges */}
-            <div className="flex items-center space-x-6 text-sm">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-6 text-sm">
               <div className="flex items-center space-x-1">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -34,8 +34,8 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+            <div className="space-y-4 lg:space-y-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
                   Academic Excellence
                 </span>
@@ -43,7 +43,7 @@ const Hero = () => {
                 <span className="text-gray-900">Made Simple</span>
               </h1>
               
-              <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
+              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed max-w-xl">
                 Get professional assignment help from expert writers. Quality work, 
                 timely delivery, and 100% plagiarism-free content guaranteed.
               </p>
@@ -51,17 +51,17 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-6 text-lg">
+              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg">
                 Order Now
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 lg:h-5 w-4 lg:w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 px-8 py-6 text-lg">
+              <Button size="lg" variant="outline" className="border-purple-200 text-purple-600 hover:bg-purple-50 px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg">
                 View Samples
               </Button>
             </div>
 
             {/* Features list */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 pt-4 lg:pt-6">
               {[
                 "100% Plagiarism Free",
                 "24/7 Customer Support",
@@ -69,16 +69,18 @@ const Hero = () => {
                 "On-Time Delivery"
               ].map((feature, index) => (
                 <div key={index} className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700 font-medium">{feature}</span>
+                  <CheckCircle className="h-4 lg:h-5 w-4 lg:w-5 text-green-500 flex-shrink-0" />
+                  <span className="text-sm lg:text-base text-gray-700 font-medium">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right column - Order Form */}
-          <div className="flex justify-center lg:justify-end">
-            <OrderForm />
+          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
+            <div className="w-full max-w-sm lg:max-w-md">
+              <OrderForm />
+            </div>
           </div>
         </div>
       </div>

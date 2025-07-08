@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -199,9 +200,9 @@ const ServicesPage = () => {
                         ))}
                       </ul>
                       
-                      <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3">
-                        Order Now
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                      <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-3">
+                        <Phone className="mr-2 h-5 w-5" />
+                        Call Now: +1 (555) 123-4567
                       </Button>
                     </div>
                   </div>
@@ -306,7 +307,7 @@ const ServicesPage = () => {
       </section>
 
       {/* Updated CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-24 h-24 bg-white/10 rounded-full animate-pulse delay-1000"></div>
@@ -325,7 +326,7 @@ const ServicesPage = () => {
             <span className="text-yellow-300">With Expert Guidance</span>
           </h2>
           
-          <p className="text-xl text-purple-100 mb-12 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl text-green-100 mb-12 leading-relaxed max-w-3xl mx-auto">
             Join thousands of students who have achieved academic success with our expert help. 
             Get started today and experience the difference quality makes.
           </p>
@@ -333,25 +334,25 @@ const ServicesPage = () => {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">
               <div className="text-3xl font-bold text-yellow-300">98%</div>
-              <div className="text-purple-100">Success Rate</div>
+              <div className="text-green-100">Success Rate</div>
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">  
               <div className="text-3xl font-bold text-yellow-300">24/7</div>
-              <div className="text-purple-100">Support Available</div>
+              <div className="text-green-100">Support Available</div>
             </div>
             <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6">
               <div className="text-3xl font-bold text-yellow-300">500+</div>
-              <div className="text-purple-100">Expert Writers</div>
+              <div className="text-green-100">Expert Writers</div>
             </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg">
+            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold shadow-lg">
               <Phone className="mr-2 h-5 w-5" />
               Call Now: +1 (555) 123-4567
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 text-lg font-semibold shadow-lg">
+            <Button size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-green-900 px-8 py-4 text-lg font-semibold shadow-lg">
               Get Free Quote
             </Button>
           </div>

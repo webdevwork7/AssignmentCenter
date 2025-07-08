@@ -1,10 +1,37 @@
 
+import { useState } from 'react';
 import { siteConfig } from '@/config/site';
 
 const WorldMap = () => {
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
+
+  const countryMarkers = [
+    { name: 'United States', x: '23%', y: '35%', color: 'from-red-500 to-red-600' },
+    { name: 'United Kingdom', x: '48%', y: '28%', color: 'from-blue-500 to-blue-600' },
+    { name: 'Canada', x: '20%', y: '25%', color: 'from-purple-500 to-purple-600' },
+    { name: 'Australia', x: '80%', y: '75%', color: 'from-green-500 to-green-600' },
+    { name: 'Germany', x: '52%', y: '32%', color: 'from-orange-500 to-orange-600' },
+    { name: 'France', x: '50%', y: '35%', color: 'from-pink-500 to-pink-600' },
+    { name: 'Japan', x: '85%', y: '40%', color: 'from-teal-500 to-teal-600' },
+    { name: 'India', x: '72%', y: '50%', color: 'from-indigo-500 to-indigo-600' },
+    { name: 'Brazil', x: '35%', y: '70%', color: 'from-yellow-500 to-yellow-600' },
+    { name: 'South Africa', x: '55%', y: '80%', color: 'from-emerald-500 to-emerald-600' },
+  ];
+
   return (
     <section className="py-20 rainbow-bg-1 relative overflow-hidden">
-      {/* Background decorative elements */}
+      {/* Animated background grid */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="w-full h-full" style={{
+          backgroundImage: `
+            linear-gradient(rgba(147, 51, 234, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(147, 51, 234, 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+
+      {/* Floating particles */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-32 h-32 bg-purple-200/20 rounded-full animate-pulse"></div>
         <div className="absolute bottom-10 right-10 w-24 h-24 bg-pink-200/20 rounded-full animate-pulse delay-1000"></div>
@@ -23,90 +50,93 @@ const WorldMap = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We've successfully assisted students from over 50+ countries worldwide with their academic needs.
+            Interactive world map showing our global presence across 50+ countries
           </p>
         </div>
 
-        {/* World Map Visual */}
+        {/* Interactive World Map */}
         <div className="relative mb-16">
-          <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-12 border-2 border-purple-100">
-            {/* Simulated World Map with Country Pins */}
-            <div className="relative h-80 bg-gradient-to-br from-blue-100 to-green-100 rounded-2xl overflow-hidden">
-              {/* Animated pins for different countries */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-full h-full">
-                  {/* USA */}
-                  <div className="absolute top-1/3 left-1/4 animate-bounce">
-                    <div className="w-4 h-4 bg-red-500 rounded-full shadow-lg"></div>
-                    <div className="w-1 h-6 bg-red-500 mx-auto"></div>
+          <div className="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 rounded-3xl p-8 border-2 border-purple-200 overflow-hidden">
+            {/* Connection lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+              {countryMarkers.map((country, index) => (
+                <g key={`line-${index}`}>
+                  <line
+                    x1="50%"
+                    y1="50%"
+                    x2={country.x}
+                    y2={country.y}
+                    stroke="rgba(147, 51, 234, 0.3)"
+                    strokeWidth="1"
+                    className="animate-pulse"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  />
+                </g>
+              ))}
+            </svg>
+
+            {/* World Map Container */}
+            <div className="relative h-96 bg-gradient-to-br from-blue-800/50 to-purple-800/50 rounded-2xl overflow-hidden">
+              {/* Country Markers */}
+              {countryMarkers.map((country, index) => (
+                <div
+                  key={index}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                  style={{ left: country.x, top: country.y }}
+                  onMouseEnter={() => setHoveredCountry(country.name)}
+                  onMouseLeave={() => setHoveredCountry(null)}
+                >
+                  {/* Pulsing outer ring */}
+                  <div className={`absolute inset-0 w-8 h-8 rounded-full bg-gradient-to-r ${country.color} opacity-30 animate-ping`}></div>
+                  
+                  {/* Main marker */}
+                  <div className={`relative w-6 h-6 rounded-full bg-gradient-to-r ${country.color} shadow-lg animate-pulse flex items-center justify-center`}
+                       style={{ animationDelay: `${index * 0.3}s` }}>
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
                   </div>
-                  {/* UK */}
-                  <div className="absolute top-1/4 left-1/2 animate-bounce" style={{animationDelay: '0.5s'}}>
-                    <div className="w-4 h-4 bg-blue-500 rounded-full shadow-lg"></div>
-                    <div className="w-1 h-6 bg-blue-500 mx-auto"></div>
-                  </div>
-                  {/* Australia */}
-                  <div className="absolute bottom-1/4 right-1/4 animate-bounce" style={{animationDelay: '1s'}}>
-                    <div className="w-4 h-4 bg-green-500 rounded-full shadow-lg"></div>
-                    <div className="w-1 h-6 bg-green-500 mx-auto"></div>
-                  </div>
-                  {/* Canada */}
-                  <div className="absolute top-1/5 left-1/3 animate-bounce" style={{animationDelay: '1.5s'}}>
-                    <div className="w-4 h-4 bg-purple-500 rounded-full shadow-lg"></div>
-                    <div className="w-1 h-6 bg-purple-500 mx-auto"></div>
-                  </div>
-                  {/* India */}
-                  <div className="absolute top-1/2 right-1/3 animate-bounce" style={{animationDelay: '2s'}}>
-                    <div className="w-4 h-4 bg-orange-500 rounded-full shadow-lg"></div>
-                    <div className="w-1 h-6 bg-orange-500 mx-auto"></div>
-                  </div>
+                  
+                  {/* Country name tooltip */}
+                  {hoveredCountry === country.name && (
+                    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-purple-200 whitespace-nowrap z-10">
+                      <div className="text-sm font-semibold text-gray-800">{country.name}</div>
+                      <div className="text-xs text-gray-600">500+ Students Helped</div>
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-white/95"></div>
+                    </div>
+                  )}
                 </div>
-              </div>
-              
-              {/* Overlay text */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center bg-white/90 backdrop-blur-sm rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">🌟 Serving Students Worldwide</h3>
-                  <p className="text-gray-600">Real-time academic support across continents</p>
+              ))}
+
+              {/* Center hub */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="relative">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 animate-pulse shadow-2xl flex items-center justify-center">
+                    <div className="text-white font-bold text-sm">HQ</div>
+                  </div>
+                  <div className="absolute inset-0 w-16 h-16 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-30 animate-ping"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Countries Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-12">
-          {siteConfig.countries.map((country, index) => (
-            <div 
-              key={index} 
-              className="group bg-white/80 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/90 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border border-purple-100"
-            >
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform duration-300">
-                <span className="text-white font-bold text-sm">
-                  {country.charAt(0)}
-                </span>
-              </div>
-              <h3 className="font-semibold text-gray-800 text-sm group-hover:text-purple-600 transition-colors">
-                {country}
-              </h3>
-            </div>
-          ))}
-        </div>
-        
         {/* Stats Section */}
         <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl p-8 text-white">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-4xl font-bold">50+</div>
+              <div className="text-4xl font-bold animate-pulse">50+</div>
               <div className="text-purple-100">Countries Served</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl font-bold">100K+</div>
+              <div className="text-4xl font-bold animate-pulse" style={{ animationDelay: '0.5s' }}>100K+</div>
               <div className="text-purple-100">Students Helped</div>
             </div>
             <div className="space-y-2">
-              <div className="text-4xl font-bold">500+</div>
+              <div className="text-4xl font-bold animate-pulse" style={{ animationDelay: '1s' }}>500+</div>
               <div className="text-purple-100">Universities Covered</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-4xl font-bold animate-pulse" style={{ animationDelay: '1.5s' }}>24/7</div>
+              <div className="text-purple-100">Global Support</div>
             </div>
           </div>
         </div>
