@@ -5,7 +5,7 @@ import OrderForm from './OrderForm';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center rainbow-bg-1 overflow-hidden">
+    <section className="relative min-h-screen flex items-center rainbow-bg-1 overflow-hidden pt-32 pb-20">
       {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-20 h-20 bg-purple-200 rounded-full opacity-30 animate-pulse"></div>
@@ -14,10 +14,10 @@ const Hero = () => {
         <div className="absolute bottom-40 right-10 w-12 h-12 bg-purple-200 rounded-full opacity-30 animate-pulse delay-2000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left column - Content */}
-          <div className="space-y-6 lg:space-y-8">
+          <div className="space-y-6 lg:space-y-8 pt-8">
             {/* Trust badges */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-6 text-sm">
               <div className="flex items-center space-x-1">
@@ -77,7 +77,7 @@ const Hero = () => {
           </div>
 
           {/* Right column - Order Form */}
-          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0 pt-8">
             <div className="w-full max-w-sm lg:max-w-md">
               <OrderForm />
             </div>
