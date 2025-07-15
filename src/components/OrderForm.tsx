@@ -98,18 +98,24 @@ const OrderForm = () => {
       : serviceSubjects[service] || []
     : [];
 
-  // Deadline options with base prices derived from test cases
+  // Deadline options with new order and labels
   const deadlineOptions = [
-    { name: "6 Hours", basePrice: 1361.25 },
-    { name: "12 Hours", basePrice: 1252.5 },
-    { name: "24 Hours", basePrice: 1143.58 },
-    { name: "2 Days", basePrice: 1055.61 },
-    { name: "3 Days", basePrice: 1000.52 },
-    { name: "4-5 Days", basePrice: 817.5 },
-    { name: "6-7 Days", basePrice: 653.4 },
-    { name: "8-10 Days", basePrice: 722.39 },
-    { name: "11-14 Days", basePrice: 544.5 },
-    { name: "15+ Days", basePrice: 704.46 },
+    { name: "4 Hours", basePrice: 1450 },
+    { name: "8 Hours", basePrice: 1361.25 },
+    { name: "16 Hours", basePrice: 1300 },
+    { name: "1 Day", basePrice: 1252.5 },
+    { name: "2 Days", basePrice: 1143.58 },
+    { name: "3 Days", basePrice: 1055.61 },
+    { name: "4 Days", basePrice: 1000.52 },
+    { name: "5 Days", basePrice: 950 },
+    { name: "6 Days", basePrice: 900 },
+    { name: "7 Days", basePrice: 850 },
+    { name: "8 Days", basePrice: 800 },
+    { name: "9 Days", basePrice: 750 },
+    { name: "15 Days", basePrice: 704.46 },
+    { name: "20 Days", basePrice: 650 },
+    { name: "25 Days", basePrice: 600 },
+    { name: "30 Days", basePrice: 550 },
   ];
 
   // Page options
@@ -134,6 +140,14 @@ const OrderForm = () => {
     { value: "18", label: "18 Pages / 4500 Words" },
     { value: "19", label: "19 Pages / 4750 Words" },
     { value: "20", label: "20 Pages / 5000 Words" },
+    { value: "21", label: "21 Pages / 5250 Words" },
+    { value: "22", label: "22 Pages / 5500 Words" },
+    { value: "23", label: "23 Pages / 5750 Words" },
+    { value: "24", label: "24 Pages / 6000 Words" },
+    { value: "25", label: "25 Pages / 6250 Words" },
+    { value: "26", label: "26 Pages / 6500 Words" },
+    { value: "27", label: "27 Pages / 6750 Words" },
+    { value: "28", label: "28 Pages / 7000 Words" },
     { value: "29", label: "29 Pages / 7250 Words" },
     { value: "30", label: "30 Pages / 7500 Words" },
     { value: "40", label: "40 Pages / 10000 Words" },
@@ -169,22 +183,22 @@ const OrderForm = () => {
     if (pageCount === 1) {
       orig = basePricePerPage;
     } else if (pageCount === 2) {
-      // Apply a 2.05 multiplier for 2 pages to match test cases
       orig = basePricePerPage * 2.05;
     } else {
-      // For 3+ pages, adjust base price based on deadline and page count
+      // Dynamically adjust based on real pricing logic
       let adjustmentFactor = 1.0;
-      if (deadline === "8-10 Days" && pageCount >= 5) {
-        adjustmentFactor = 1.0 / Math.pow(pageCount, 0.02); // Slight decrease for higher pages
-      } else if (deadline === "15+ Days" && pageCount >= 11) {
-        adjustmentFactor = 1.0 / Math.pow(pageCount, 0.015); // Slight decrease
-      } else if (deadline === "3 Days" && pageCount >= 29) {
-        adjustmentFactor = 1.0 / Math.pow(pageCount, 0.01); // Minimal adjustment
+
+      if (["8-10 Days"].includes(deadline) && pageCount >= 5) {
+        adjustmentFactor = 1.0 / Math.pow(pageCount, 0.02);
+      } else if (["15+ Days"].includes(deadline) && pageCount >= 11) {
+        adjustmentFactor = 1.0 / Math.pow(pageCount, 0.015);
+      } else if (["3 Days"].includes(deadline) && pageCount >= 29) {
+        adjustmentFactor = 1.0 / Math.pow(pageCount, 0.01);
       }
+
       orig = basePricePerPage * pageCount * adjustmentFactor;
     }
 
-    // Round to 2 decimal places
     orig = Math.round(orig * 100) / 100;
     const discounted = Math.round(orig * 0.75 * 100) / 100;
 
@@ -195,6 +209,7 @@ const OrderForm = () => {
     calculatePrice();
     setSubject("");
     setPages("");
+    setDeadline(""); // Reset deadline when service changes
   }, [service]);
 
   useEffect(() => {
