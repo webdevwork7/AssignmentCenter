@@ -334,6 +334,35 @@ const OrderForm = () => {
 
       return;
     }
+
+    if (service === "Dissertation") {
+      const maxDeadline = 30;
+      const urgencyWeight = 0.35;
+      const volumeDiscountPerPage = 0.01;
+
+      const urgencyMultiplier =
+        1 + ((maxDeadline - days) / maxDeadline) * urgencyWeight;
+
+      const cappedPages = Math.min(pageCount, 20);
+      const volumeMultiplier = 1 - cappedPages * volumeDiscountPerPage;
+
+      const baseRateUSD = 3.5;
+      const conversionRate = 264; // $1 ≈ ₹264
+
+      const perPageUSD = baseRateUSD * urgencyMultiplier * volumeMultiplier;
+      const perPageINR = perPageUSD * conversionRate;
+
+      const discountedPrice = +(perPageINR * pageCount).toFixed(0); // INR rounded
+      const totalPriceCustom = +(discountedPrice * 1.333).toFixed(0); // for original
+
+      setPrice({
+        original: totalPriceCustom,
+        discounted: discountedPrice,
+      });
+
+      return;
+    }
+
     // EXISTING: Your original Assignment Help logic (unchanged)
     const deadlineOption = deadlineOptions.find((d) => d.name === deadline);
     const basePricePerPage = deadlineOption ? deadlineOption.basePrice : 544.5;
