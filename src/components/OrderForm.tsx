@@ -363,6 +363,45 @@ const OrderForm = () => {
       return;
     }
 
+    if (service === "PHD Thesis") {
+      const conversionRate = 264;
+
+      // Example dynamic pricing (adjust based on your real price chart)
+      const pricePerPageUSDByDays: { [key: number]: number } = {
+        1: 4.88,
+        2: 4.6,
+        3: 4.3,
+        5: 4.0,
+        7: 3.7,
+        10: 3.5,
+      };
+
+      // Fallback to highest if not exact day match
+      const sortedDays = Object.keys(pricePerPageUSDByDays)
+        .map(Number)
+        .sort((a, b) => a - b);
+      let selectedRate =
+        pricePerPageUSDByDays[sortedDays[sortedDays.length - 1]];
+
+      for (const d of sortedDays) {
+        if (days <= d) {
+          selectedRate = pricePerPageUSDByDays[d];
+          break;
+        }
+      }
+
+      const perPageINR = selectedRate * conversionRate;
+      const discountedPrice = Math.round(perPageINR * pageCount);
+      const originalPrice = Math.round(discountedPrice * 1.333);
+
+      setPrice({
+        original: originalPrice,
+        discounted: discountedPrice,
+      });
+
+      return;
+    }
+
     // EXISTING: Your original Assignment Help logic (unchanged)
     const deadlineOption = deadlineOptions.find((d) => d.name === deadline);
     const basePricePerPage = deadlineOption ? deadlineOption.basePrice : 544.5;
