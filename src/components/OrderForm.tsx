@@ -402,6 +402,45 @@ const OrderForm = () => {
       return;
     }
 
+    if (service === "Case Study") {
+      const conversionRate = 264.3;
+
+      // USD price per page by day (adjust as you provide more real samples)
+      const pricePerPageUSDByDays: { [key: number]: number } = {
+        1: 3.25,
+        2: 3.0,
+        3: 2.85,
+        4: 2.7,
+        5: 2.6,
+        7: 2.4,
+        10: 2.2,
+      };
+
+      const sortedDays = Object.keys(pricePerPageUSDByDays)
+        .map(Number)
+        .sort((a, b) => a - b);
+
+      let selectedRate =
+        pricePerPageUSDByDays[sortedDays[sortedDays.length - 1]];
+      for (const d of sortedDays) {
+        if (days <= d) {
+          selectedRate = pricePerPageUSDByDays[d];
+          break;
+        }
+      }
+
+      const perPageINR = selectedRate * conversionRate;
+      const discountedPrice = Math.round(perPageINR * pageCount);
+      const originalPrice = Math.round(discountedPrice * 1.333); // reverse of 25% discount
+
+      setPrice({
+        original: originalPrice,
+        discounted: discountedPrice,
+      });
+
+      return;
+    }
+
     // EXISTING: Your original Assignment Help logic (unchanged)
     const deadlineOption = deadlineOptions.find((d) => d.name === deadline);
     const basePricePerPage = deadlineOption ? deadlineOption.basePrice : 544.5;
