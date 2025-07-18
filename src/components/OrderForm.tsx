@@ -23,11 +23,11 @@ const OrderForm = () => {
   // Service options
   const serviceOptions = [
     "Assignment Help",
-    "Essay Writing",
     "Research Paper",
-    "Thesis & Dissertation",
-    "Math & Statistics",
-    "Online Course Help",
+    "Report Writing",
+    "Dissertation",
+    "PHD Thesis",
+    "Case Study",
   ];
 
   // Comprehensive subject list for Assignment Help
@@ -76,19 +76,52 @@ const OrderForm = () => {
     "Other",
   ];
 
-  // Mock serviceSubjects for other services
+  // Subject lists for each service
   const serviceSubjects = {
-    "Essay Writing": [
-      "English",
-      "Literature",
-      "History",
-      "Philosophy",
+    "Research Paper": [
+      "Science",
+      "Social Science",
+      "Psychology",
+      "Engineering",
+      "Business",
+      "Law",
       "Other",
     ],
-    "Research Paper": ["Science", "Social Science", "Psychology", "Other"],
-    "Thesis & Dissertation": ["All Subjects"],
-    "Math & Statistics": ["Mathematics", "Statistics", "Data Science"],
-    "Online Course Help": ["All Subjects"],
+    "Report Writing": [
+      "Business",
+      "Engineering",
+      "Science",
+      "Management",
+      "Finance",
+      "Marketing",
+      "IT",
+      "Other",
+    ],
+    Dissertation: [
+      "All Subjects",
+      "Business",
+      "Science",
+      "Engineering",
+      "Management",
+      "Law",
+      "Other",
+    ],
+    "PHD Thesis": [
+      "All Subjects",
+      "Science",
+      "Engineering",
+      "Business",
+      "Social Science",
+      "Other",
+    ],
+    "Case Study": [
+      "Business",
+      "Management",
+      "Marketing",
+      "Finance",
+      "Law",
+      "Other",
+    ],
   };
 
   // Get subjects for selected service
@@ -175,6 +208,133 @@ const OrderForm = () => {
     }
 
     const pageCount = parseInt(pages) || 1;
+
+    const extractDaysFromDeadline = (deadlineStr) => {
+      const deadlineMap = {
+        "4 Hours": 0.17,
+        "8 Hours": 0.33,
+        "16 Hours": 0.67,
+        "1 Day": 1,
+        "2 Days": 2,
+        "3 Days": 3,
+        "4 Days": 4,
+        "5 Days": 5,
+        "6 Days": 6,
+        "7 Days": 7,
+        "8 Days": 8,
+        "9 Days": 9,
+        "15 Days": 15,
+        "20 Days": 20,
+        "25 Days": 25,
+        "30 Days": 30,
+      };
+      return deadlineMap[deadlineStr] || 15;
+    };
+
+    const days = extractDaysFromDeadline(deadline);
+
+    // NEW: Research Paper Logic using GAH Formula
+    if (service === "Research Paper") {
+      // Extract days from deadline string
+      const extractDaysFromDeadline = (deadlineStr) => {
+        const deadlineMap = {
+          "4 Hours": 0.17,
+          "8 Hours": 0.33,
+          "16 Hours": 0.67,
+          "1 Day": 1,
+          "2 Days": 2,
+          "3 Days": 3,
+          "4 Days": 4,
+          "5 Days": 5,
+          "6 Days": 6,
+          "7 Days": 7,
+          "8 Days": 8,
+          "9 Days": 9,
+          "15 Days": 15,
+          "20 Days": 20,
+          "25 Days": 25,
+          "30 Days": 30,
+        };
+        return deadlineMap[deadlineStr] || 15;
+      };
+
+      const days = extractDaysFromDeadline(deadline);
+
+      // Base price per page based on deadline urgency (USD)
+      const getBasePricePerPage = (days) => {
+        if (days <= 0.17) return 28.5; // 4 hours
+        if (days <= 0.33) return 26.8; // 8 hours
+        if (days <= 0.67) return 24.5; // 16 hours
+        if (days <= 1) return 19.5; // 1 day
+        if (days <= 2) return 18.0; // 2 days
+        if (days <= 3) return 16.8; // 3 days
+        if (days <= 4) return 15.8; // 4 days
+        if (days <= 5) return 14.24; // 5 days
+        if (days <= 6) return 13.5; // 6 days
+        if (days <= 7) return 12.79; // 7 days
+        if (days <= 8) return 12.4; // 8 days
+        if (days <= 9) return 12.16; // 9 days
+        if (days <= 15) return 11.75; // 15 days
+        if (days <= 20) return 11.2; // 20 days
+        if (days <= 25) return 10.8; // 25 days
+        return 10.5; // 30+ days
+      };
+
+      // Volume discount multiplier
+      const getVolumeDiscountMultiplier = (pages) => {
+        if (pages >= 50) return 0.96; // 4% discount for 50+ pages
+        if (pages >= 30) return 0.97; // 3% discount for 30-49 pages
+        if (pages >= 20) return 0.975; // 2.5% discount for 20-29 pages
+        if (pages >= 15) return 0.98; // 2% discount for 15-19 pages
+        if (pages >= 11) return 0.985; // 1.5% discount for 11-14 pages
+        if (pages >= 7) return 0.995; // 0.5% discount for 7-10 pages
+        return 1.0; // No discount for < 7 pages
+      };
+
+      // Calculate Research Paper pricing
+      const basePricePerPageUSD = getBasePricePerPage(days);
+      const volumeMultiplier = getVolumeDiscountMultiplier(pageCount);
+
+      // Convert USD to INR (1 USD = 83 INR)
+      const usdToInrRate = 83;
+      const basePricePerPageINR = basePricePerPageUSD * usdToInrRate;
+
+      const totalPriceINR =
+        basePricePerPageINR * pageCount * volumeMultiplier * 1.08; // 8% higher for research paper
+
+      // Apply 25% discount
+      const originalPrice = Math.round(totalPriceINR * 100) / 100;
+      const discountedPrice = Math.round(originalPrice * 0.75 * 100) / 100;
+
+      setPrice({
+        original: originalPrice,
+        discounted: discountedPrice,
+      });
+      return;
+    }
+    const getPerPageRate = (days: number): number => {
+      if (days <= 3) return 1050;
+      if (days <= 6) return 900;
+      if (days <= 10) return 773.07;
+      return 700;
+    };
+
+    if (service === "Report Writing") {
+      const pageCount = Number(pages);
+      const dayCount = Number(days);
+
+      const rate = getPerPageRate(dayCount);
+      const originalPrice = +(rate * pageCount).toFixed(2);
+      const discountedPrice = +(originalPrice * 0.75).toFixed(2);
+
+      setPrice({
+        original: originalPrice,
+        discounted: discountedPrice,
+      });
+
+      return;
+    }
+    // EXISTING: Your original Assignment Help logic (unchanged)
     const deadlineOption = deadlineOptions.find((d) => d.name === deadline);
     const basePricePerPage = deadlineOption ? deadlineOption.basePrice : 544.5;
 
