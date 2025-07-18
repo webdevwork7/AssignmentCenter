@@ -11,6 +11,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calculator, Phone } from "lucide-react";
+import { addCartItem } from "@/lib/cart";
+import { useToast } from "@/components/ui/use-toast";
 
 const OrderForm = () => {
   // State for form fields
@@ -19,6 +21,8 @@ const OrderForm = () => {
   const [deadline, setDeadline] = useState("");
   const [pages, setPages] = useState("");
   const [price, setPrice] = useState({ original: 0, discounted: 0 });
+  const [cartLoading, setCartLoading] = useState(false);
+  const { toast } = useToast();
 
   // Service options
   const serviceOptions = [
@@ -472,6 +476,33 @@ const OrderForm = () => {
     setPrice({ original: orig, discounted });
   };
 
+  const handleAddToCart = async () => {
+    if (!service || !subject || !deadline || !pages) return;
+    setCartLoading(true);
+    const { error } = await addCartItem({
+      service_type: service,
+      subject,
+      deadline,
+      pages: Number(pages),
+      price: price.discounted,
+      quantity: 1,
+    });
+    setCartLoading(false);
+    if (error) {
+      toast({
+        title: "Error",
+        description: "Failed to add to cart.",
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Added to Cart",
+        description: "Your item has been added to the cart.",
+        variant: "default",
+      });
+    }
+  };
+
   useEffect(() => {
     calculatePrice();
     setSubject("");
@@ -604,9 +635,14 @@ const OrderForm = () => {
                   </div>
                 </div>
               )}
-              <Button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 text-sm font-semibold">
-                <Phone className="mr-2 h-4 w-4" />
-                Call Now
+              <Button
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white py-3 text-sm font-semibold"
+                onClick={handleAddToCart}
+                disabled={
+                  cartLoading || !service || !subject || !deadline || !pages
+                }
+              >
+                {cartLoading ? "Adding..." : "Add to Cart"}
               </Button>
             </CardContent>
           </div>
