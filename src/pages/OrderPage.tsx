@@ -112,6 +112,8 @@ const OrderPage = () => {
               created_at: new Date().toISOString(),
               quantity: item.quantity,
               email: userDetails.email,
+              full_name: userDetails.full_name,
+              phone: userDetails.phone,
             },
           ]);
         }
