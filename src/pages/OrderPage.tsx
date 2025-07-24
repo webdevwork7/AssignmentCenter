@@ -97,6 +97,24 @@ const OrderPage = () => {
       );
       const dataRes = await response.json();
       if (dataRes.id) {
+        // Insert each cart item as a separate order
+        for (const item of cart) {
+          await supabase.from("orders").insert([
+            {
+              user_id: user.id,
+              guest_id: null,
+              service_type: item.service_type,
+              subject: item.subject,
+              deadline: item.deadline,
+              pages: item.pages,
+              price: item.price,
+              status: "pending",
+              created_at: new Date().toISOString(),
+              quantity: item.quantity,
+              email: userDetails.email,
+            },
+          ]);
+        }
         const stripe = await stripePromise;
         await clearCart(); // Clear the cart before redirecting
         await stripe.redirectToCheckout({ sessionId: dataRes.id });
