@@ -41,3 +41,13 @@ export async function updateCartItem(id, updates) {
 export async function removeCartItem(id) {
   return supabase.from("cart").delete().eq("id", id);
 }
+
+// Remove all cart items for current user/guest
+export async function clearCart() {
+  const user = await getUser();
+  if (user) {
+    return supabase.from("cart").delete().eq("user_id", user.id);
+  } else {
+    return supabase.from("cart").delete().eq("guest_id", getGuestId());
+  }
+}

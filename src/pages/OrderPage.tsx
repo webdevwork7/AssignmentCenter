@@ -3,10 +3,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { getCartItems, removeCartItem } from "@/lib/cart";
+import { getCartItems, removeCartItem, clearCart } from "@/lib/cart";
 import { getUser } from "@/lib/auth";
 import { supabase } from "@/lib/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51RoOywKA82aMgYJAfJufkqLLvVVKvUuY20UtOMvZA6KOpt5cPEpxXEDxWJe7NkHut8N1FW0kmlscTkTdHumoWKn20051rJVS6C"
+); // Dummy test key
 
 const OrderPage = () => {
   const [cart, setCart] = useState([]);
@@ -17,6 +22,7 @@ const OrderPage = () => {
     email: "",
     phone: "",
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -26,6 +32,7 @@ const OrderPage = () => {
       const { data } = await getCartItems();
       setCart(data || []);
       const user = await getUser();
+      setIsLoggedIn(!!user);
       if (user) {
         const { data: profile } = await supabase
           .from("profiles")
@@ -50,6 +57,14 @@ const OrderPage = () => {
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault();
+    if (!isLoggedIn) {
+      toast({
+        title: "Please login to order",
+        description: "You must be logged in to place an order.",
+        variant: "destructive",
+      });
+      return;
+    }
     setPlacing(true);
     const user = await getUser();
     if (!user) {
@@ -61,41 +76,41 @@ const OrderPage = () => {
       setPlacing(false);
       return;
     }
-    // Place all cart items as orders
-    const orderPayloads = cart.map((item) => ({
-      user_id: user.id,
-      service_type: item.service_type,
-      subject: item.subject,
-      deadline: item.deadline,
-      pages: item.pages,
-      price: item.price,
-      quantity: item.quantity,
-      status: "pending",
-      full_name: userDetails.full_name,
-      email: userDetails.email,
-      phone: userDetails.phone,
-    }));
-    const { error } = await supabase.from("orders").insert(orderPayloads);
-    if (error) {
+    try {
+      // Get Supabase access token
+      const { data } = await supabase.auth.getSession();
+      const accessToken = data?.session?.access_token;
+      // Call Supabase Edge Function for Stripe session
+      const response = await fetch(
+        "https://xdtyxlderzfqytpsvtrc.functions.supabase.co/create-stripe-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...(accessToken && { Authorization: `Bearer ${accessToken}` }),
+          },
+          body: JSON.stringify({
+            cart,
+            email: userDetails.email,
+          }),
+        }
+      );
+      const dataRes = await response.json();
+      if (dataRes.id) {
+        const stripe = await stripePromise;
+        await clearCart(); // Clear the cart before redirecting
+        await stripe.redirectToCheckout({ sessionId: dataRes.id });
+      } else {
+        throw new Error(dataRes.error || "Could not create Stripe session");
+      }
+    } catch (err) {
       toast({
-        title: "Order Failed",
-        description: "Could not place your order. Please try again.",
+        title: "Stripe Error",
+        description: err.message,
         variant: "destructive",
       });
-      setPlacing(false);
-      return;
     }
-    // Clear cart
-    for (const item of cart) {
-      await removeCartItem(item.id);
-    }
-    toast({
-      title: "Order Placed!",
-      description: "Your order has been placed successfully.",
-      variant: "default",
-    });
     setPlacing(false);
-    setTimeout(() => navigate("/profile"), 1500);
   };
 
   return (
@@ -272,7 +287,7 @@ const OrderPage = () => {
                 <Button
                   type="submit"
                   className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white text-lg font-semibold shadow"
-                  disabled={placing}
+                  disabled={placing || !isLoggedIn}
                 >
                   {placing ? "Placing Order..." : "Place Order"}
                 </Button>
