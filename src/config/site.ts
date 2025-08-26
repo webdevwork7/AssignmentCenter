@@ -1,9 +1,10 @@
 export const siteConfig = {
-  name: "AssignmentHelper",
+  name: "Assignments Center",
   description: "Professional assignment help and academic writing services",
-  email: "support@assignmenthelper.site",
-  phone: "+1 (555) 123-4567",
-  address: "123 Academic Street, Education City, EC 12345",
+  email: "info@assignmentscenter.com",
+  phone: "+1 (808) 229-4449",
+  address:
+    "QUALCORE SOLUTIONS LLC, 6511 NOVA DRIVE, SUITE 336, DAVIE, FL 33317",
 
   // Social links
   social: {

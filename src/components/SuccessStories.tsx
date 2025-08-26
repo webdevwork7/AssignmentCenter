@@ -1,7 +1,6 @@
-
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Star, GraduationCap, BookOpen, Award } from 'lucide-react';
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Star, GraduationCap, BookOpen, Award } from "lucide-react";
 
 const SuccessStories = () => {
   const stories = [
@@ -10,67 +9,73 @@ const SuccessStories = () => {
       country: "🇺🇸 United States",
       grade: "A+",
       subject: "Psychology",
-      story: "Thanks to AssignmentHelper, I was able to maintain my GPA while working part-time. Their expert guidance helped me understand complex psychological theories and research methodologies.",
+      story:
+        "Thanks to Assignments Center, I was able to maintain my GPA while working part-time. Their expert guidance helped me understand complex psychological theories and research methodologies.",
       university: "Harvard University",
       previousGrade: "B-",
       improvement: "+2 Letter Grades",
-      color: "from-purple-500 to-purple-600"
+      color: "from-purple-500 to-purple-600",
     },
     {
       name: "James Mitchell",
       country: "🇬🇧 United Kingdom",
       grade: "First Class",
       subject: "Business Studies",
-      story: "The dissertation help I received was exceptional. My supervisor was impressed with the quality of research and analysis. I couldn't have achieved this without their support.",
+      story:
+        "The dissertation help I received was exceptional. My supervisor was impressed with the quality of research and analysis. I couldn't have achieved this without their support.",
       university: "Oxford University",
       previousGrade: "2:2",
       improvement: "From 2:2 to First Class",
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
     },
     {
       name: "Emma Thompson",
       country: "🇦🇺 Australia",
       grade: "HD",
       subject: "Engineering",
-      story: "Complex mathematical problems became manageable with their step-by-step guidance. I not only passed but excelled in my most challenging subjects.",
+      story:
+        "Complex mathematical problems became manageable with their step-by-step guidance. I not only passed but excelled in my most challenging subjects.",
       university: "University of Melbourne",
       previousGrade: "P",
       improvement: "From Pass to HD",
-      color: "from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
     },
     {
       name: "Michael Chen",
       country: "🇨🇦 Canada",
       grade: "A",
       subject: "Computer Science",
-      story: "Their programming assignment help was a game-changer. I learned coding best practices and improved my problem-solving skills significantly.",
+      story:
+        "Their programming assignment help was a game-changer. I learned coding best practices and improved my problem-solving skills significantly.",
       university: "University of Toronto",
       previousGrade: "C+",
       improvement: "+3 Letter Grades",
-      color: "from-orange-500 to-orange-600"
+      color: "from-orange-500 to-orange-600",
     },
     {
       name: "Priya Sharma",
       country: "🇮🇳 India",
       grade: "O",
       subject: "Medicine",
-      story: "Medical school is tough, but with their research paper assistance, I was able to publish my work in a peer-reviewed journal during my studies.",
+      story:
+        "Medical school is tough, but with their research paper assistance, I was able to publish my work in a peer-reviewed journal during my studies.",
       university: "AIIMS Delhi",
       previousGrade: "A",
       improvement: "From A to Outstanding",
-      color: "from-pink-500 to-pink-600"
+      color: "from-pink-500 to-pink-600",
     },
     {
       name: "David Wilson",
       country: "🇿🇦 South Africa",
       grade: "Distinction",
       subject: "Law",
-      story: "Their legal research assistance helped me understand complex case studies and legal precedents. I graduated with honors thanks to their support.",
+      story:
+        "Their legal research assistance helped me understand complex case studies and legal precedents. I graduated with honors thanks to their support.",
       university: "University of Cape Town",
       previousGrade: "Merit",
       improvement: "From Merit to Distinction",
-      color: "from-teal-500 to-teal-600"
-    }
+      color: "from-teal-500 to-teal-600",
+    },
   ];
 
   return (
@@ -93,28 +98,38 @@ const SuccessStories = () => {
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
               Success Stories
-            </span>{' '}
+            </span>{" "}
             From Around The World
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Real students, real results. See how our expert assistance has transformed academic journeys worldwide.
+            Real students, real results. See how our expert assistance has
+            transformed academic journeys worldwide.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stories.map((story, index) => (
-            <Card key={index} className="group bg-white/80 backdrop-blur-sm hover:bg-white/90 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 p-1 rainbow-border">
+            <Card
+              key={index}
+              className="group bg-white/80 backdrop-blur-sm hover:bg-white/90 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 p-1 rainbow-border"
+            >
               <div className="bg-white rounded-lg">
                 <CardContent className="p-6 space-y-4">
                   {/* Header */}
                   <div className="flex items-start justify-between">
                     <div>
-                      <h3 className="font-bold text-gray-900 text-lg">{story.name}</h3>
+                      <h3 className="font-bold text-gray-900 text-lg">
+                        {story.name}
+                      </h3>
                       <p className="text-sm text-gray-600">{story.country}</p>
-                      <p className="text-sm text-gray-500 font-medium">{story.university}</p>
+                      <p className="text-sm text-gray-500 font-medium">
+                        {story.university}
+                      </p>
                     </div>
                     <div className="text-right">
-                      <Badge className={`bg-gradient-to-r ${story.color} text-white mb-2`}>
+                      <Badge
+                        className={`bg-gradient-to-r ${story.color} text-white mb-2`}
+                      >
                         {story.grade}
                       </Badge>
                       <div className="flex items-center text-yellow-400">
@@ -149,7 +164,9 @@ const SuccessStories = () => {
                   </blockquote>
 
                   {/* Bottom decoration */}
-                  <div className={`h-1 bg-gradient-to-r ${story.color} rounded-full`}></div>
+                  <div
+                    className={`h-1 bg-gradient-to-r ${story.color} rounded-full`}
+                  ></div>
                 </CardContent>
               </div>
             </Card>
@@ -163,7 +180,8 @@ const SuccessStories = () => {
               Ready to Join Our Success Story?
             </h3>
             <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
-              Join thousands of students who have achieved academic excellence with our expert guidance.
+              Join thousands of students who have achieved academic excellence
+              with our expert guidance.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="space-y-2">
