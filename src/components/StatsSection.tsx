@@ -5,23 +5,23 @@ const StatsSection = () => {
   const stats = [
     {
       icon: Users,
-      number: "2,500+",
+      number: "1,800+",
       label: "Happy Students",
       description: "Students worldwide trust us",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: FileText,
-      number: "8,000+",
+      number: "5,200+",
       label: "Assignments Completed",
       description: "Successfully delivered projects",
       color: "from-blue-500 to-purple-500",
     },
     {
       icon: Award,
-      number: "98%",
+      number: "92%",
       label: "Success Rate",
-      description: "Students achieve A+ grades",
+      description: "Students achieve better grades",
       color: "from-green-500 to-blue-500",
     },
     {
@@ -86,7 +86,7 @@ const StatsSection = () => {
             Ready to Join Our Success Story?
           </h3>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Become part of our growing community of 2,500+ happy customers who
+            Become part of our growing community of 1,800+ happy students who
             have achieved their academic goals with our help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

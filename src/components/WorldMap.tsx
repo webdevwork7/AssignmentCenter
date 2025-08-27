@@ -176,7 +176,7 @@ const WorldMap = () => {
         <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl p-8 text-white">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
-              <div className="text-4xl font-bold animate-pulse">15+</div>
+              <div className="text-4xl font-bold animate-pulse">12+</div>
               <div className="text-purple-100">Countries Served</div>
             </div>
             <div className="space-y-2">
@@ -184,7 +184,7 @@ const WorldMap = () => {
                 className="text-4xl font-bold animate-pulse"
                 style={{ animationDelay: "0.5s" }}
               >
-                2.5K+
+                1.8K+
               </div>
               <div className="text-purple-100">Students Helped</div>
             </div>
@@ -193,7 +193,7 @@ const WorldMap = () => {
                 className="text-4xl font-bold animate-pulse"
                 style={{ animationDelay: "1s" }}
               >
-                80+
+                65+
               </div>
               <div className="text-purple-100">Universities Covered</div>
             </div>

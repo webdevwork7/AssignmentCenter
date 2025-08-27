@@ -167,46 +167,6 @@ const WhatIsAssignmentsCenter = () => {
           </div>
         </div>
 
-        {/* Expert Profiles */}
-        <div className="mb-12">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">
-            Meet Our Expert Tutors
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {experts.map((expert, index) => (
-              <div
-                key={index}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/20 hover:bg-white/90 transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{expert.image}</div>
-                <h4 className="text-lg font-bold text-gray-900 mb-1">
-                  {expert.name}
-                </h4>
-                <p className="text-purple-600 font-medium mb-2">
-                  {expert.field}
-                </p>
-                <p className="text-gray-600 text-sm mb-3">
-                  {expert.experience}
-                </p>
-                <div className="flex items-center justify-center space-x-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Award
-                      key={i}
-                      className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                  <span className="text-sm text-gray-600 ml-1">
-                    ({expert.rating})
-                  </span>
-                </div>
-                <Button className="mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white text-sm px-4 py-2">
-                  Hire Expert
-                </Button>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* CTA Section */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl p-8 text-white">

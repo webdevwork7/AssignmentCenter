@@ -180,20 +180,20 @@ const SuccessStories = () => {
               Ready to Join Our Success Story?
             </h3>
             <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
-              Join 2,500+ happy customers who have achieved their academic goals
+              Join 1,800+ happy students who have achieved their academic goals
               with our expert guidance.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="space-y-2">
-                <div className="text-2xl font-bold text-yellow-300">95%</div>
+                <div className="text-2xl font-bold text-yellow-300">92%</div>
                 <div className="text-purple-100 text-sm">Success Rate</div>
               </div>
               <div className="space-y-2">
-                <div className="text-2xl font-bold text-yellow-300">15+</div>
+                <div className="text-2xl font-bold text-yellow-300">12+</div>
                 <div className="text-purple-100 text-sm">Countries</div>
               </div>
               <div className="space-y-2">
-                <div className="text-2xl font-bold text-yellow-300">2.5K+</div>
+                <div className="text-2xl font-bold text-yellow-300">1.8K+</div>
                 <div className="text-purple-100 text-sm">Happy Students</div>
               </div>
               <div className="space-y-2">
