@@ -25,9 +25,9 @@ const WhyChooseUs = () => {
     },
     {
       icon: Users,
-      title: "500+ Subjects",
+      title: "50+ Subjects",
       description:
-        "Coverage across all academic disciplines and specializations",
+        "Coverage across major academic disciplines and specializations",
       color: "from-orange-500 to-red-500",
     },
     {

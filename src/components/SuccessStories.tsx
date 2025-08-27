@@ -5,75 +5,75 @@ import { Star, GraduationCap, BookOpen, Award } from "lucide-react";
 const SuccessStories = () => {
   const stories = [
     {
-      name: "Sarah Johnson",
+      name: "Jessica M.",
       country: "🇺🇸 United States",
-      grade: "A+",
+      grade: "A-",
       subject: "Psychology",
       story:
-        "Thanks to Assignments Center, I was able to maintain my GPA while working part-time. Their expert guidance helped me understand complex psychological theories and research methodologies.",
-      university: "Harvard University",
-      previousGrade: "B-",
-      improvement: "+2 Letter Grades",
+        "I was struggling with my research methods assignment and found their service through a friend. The tutor helped me understand statistical analysis better and I improved my grade significantly.",
+      university: "Arizona State University",
+      previousGrade: "C+",
+      improvement: "+1.5 Letter Grades",
       color: "from-purple-500 to-purple-600",
     },
     {
-      name: "James Mitchell",
+      name: "Alex R.",
       country: "🇬🇧 United Kingdom",
-      grade: "First Class",
+      grade: "2:1",
       subject: "Business Studies",
       story:
-        "The dissertation help I received was exceptional. My supervisor was impressed with the quality of research and analysis. I couldn't have achieved this without their support.",
-      university: "Oxford University",
+        "The essay writing support really helped me structure my arguments better. My professor commented on the improved clarity and depth of my analysis.",
+      university: "University of Manchester",
       previousGrade: "2:2",
-      improvement: "From 2:2 to First Class",
+      improvement: "From 2:2 to 2:1",
       color: "from-blue-500 to-blue-600",
     },
     {
-      name: "Emma Thompson",
+      name: "Sophie L.",
       country: "🇦🇺 Australia",
-      grade: "HD",
+      grade: "B+",
       subject: "Engineering",
       story:
-        "Complex mathematical problems became manageable with their step-by-step guidance. I not only passed but excelled in my most challenging subjects.",
-      university: "University of Melbourne",
-      previousGrade: "P",
-      improvement: "From Pass to HD",
+        "Math was never my strong suit, but the step-by-step explanations helped me grasp complex calculus concepts. I actually started enjoying the subject!",
+      university: "University of Sydney",
+      previousGrade: "C",
+      improvement: "From C to B+",
       color: "from-green-500 to-green-600",
     },
     {
-      name: "Michael Chen",
+      name: "Ryan K.",
       country: "🇨🇦 Canada",
-      grade: "A",
+      grade: "B+",
       subject: "Computer Science",
       story:
-        "Their programming assignment help was a game-changer. I learned coding best practices and improved my problem-solving skills significantly.",
-      university: "University of Toronto",
+        "The programming assignment help was exactly what I needed. They didn't just give me answers but taught me how to think through problems logically.",
+      university: "University of British Columbia",
       previousGrade: "C+",
-      improvement: "+3 Letter Grades",
+      improvement: "+1 Letter Grade",
       color: "from-orange-500 to-orange-600",
     },
     {
-      name: "Priya Sharma",
-      country: "🇮🇳 India",
-      grade: "O",
-      subject: "Medicine",
+      name: "Maria S.",
+      country: "🇪🇸 Spain",
+      grade: "A-",
+      subject: "Literature",
       story:
-        "Medical school is tough, but with their research paper assistance, I was able to publish my work in a peer-reviewed journal during my studies.",
-      university: "AIIMS Delhi",
-      previousGrade: "A",
-      improvement: "From A to Outstanding",
+        "As an international student, academic writing in English was challenging. Their feedback helped me improve my writing style and critical analysis skills.",
+      university: "University of Barcelona",
+      previousGrade: "B-",
+      improvement: "+1 Letter Grade",
       color: "from-pink-500 to-pink-600",
     },
     {
-      name: "David Wilson",
-      country: "🇿🇦 South Africa",
-      grade: "Distinction",
-      subject: "Law",
+      name: "Tom H.",
+      country: "🇳🇿 New Zealand",
+      grade: "B+",
+      subject: "Economics",
       story:
-        "Their legal research assistance helped me understand complex case studies and legal precedents. I graduated with honors thanks to their support.",
-      university: "University of Cape Town",
-      previousGrade: "Merit",
-      improvement: "From Merit to Distinction",
+        "The economics tutoring sessions were really helpful. Complex theories became much clearer and I felt more confident during exams.",
+      university: "University of Auckland",
+      previousGrade: "C+",
+      improvement: "+1 Letter Grade",
       color: "from-teal-500 to-teal-600",
     },
   ];
@@ -180,20 +180,20 @@ const SuccessStories = () => {
               Ready to Join Our Success Story?
             </h3>
             <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
-              Join thousands of students who have achieved academic excellence
+              Join 2,500+ happy customers who have achieved their academic goals
               with our expert guidance.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="space-y-2">
-                <div className="text-2xl font-bold text-yellow-300">98%</div>
+                <div className="text-2xl font-bold text-yellow-300">95%</div>
                 <div className="text-purple-100 text-sm">Success Rate</div>
               </div>
               <div className="space-y-2">
-                <div className="text-2xl font-bold text-yellow-300">50+</div>
+                <div className="text-2xl font-bold text-yellow-300">15+</div>
                 <div className="text-purple-100 text-sm">Countries</div>
               </div>
               <div className="space-y-2">
-                <div className="text-2xl font-bold text-yellow-300">10K+</div>
+                <div className="text-2xl font-bold text-yellow-300">2.5K+</div>
                 <div className="text-purple-100 text-sm">Happy Students</div>
               </div>
               <div className="space-y-2">
