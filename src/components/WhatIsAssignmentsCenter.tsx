@@ -167,6 +167,136 @@ const WhatIsAssignmentsCenter = () => {
           </div>
         </div>
 
+        {/* We are Assignments Center Section */}
+        <div className="mb-16">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/20">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                We are{" "}
+                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
+                  Assignments Center
+                </span>
+              </h3>
+              <h4 className="text-2xl font-semibold text-gray-700 mb-6">
+                We Provide The Best Assignment Help Online!
+              </h4>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                    <Shield className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-2">
+                      Verified Academic Writers
+                    </h5>
+                    <p className="text-gray-600 text-sm">
+                      All our writers hold advanced degrees from accredited
+                      universities and undergo rigorous background checks before
+                      joining our team.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-2">
+                      Transparent Process
+                    </h5>
+                    <p className="text-gray-600 text-sm">
+                      We maintain complete transparency in our pricing,
+                      deadlines, and revision policies. No hidden fees or
+                      surprise charges.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                    <Award className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-2">
+                      Quality Guarantee
+                    </h5>
+                    <p className="text-gray-600 text-sm">
+                      Every assignment goes through multiple quality checks
+                      including plagiarism detection, grammar review, and
+                      academic standard verification.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0">
+                    <Clock className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-2">
+                      Reliable Support
+                    </h5>
+                    <p className="text-gray-600 text-sm">
+                      Our customer support team is available around the clock to
+                      assist you with any questions or concerns about your
+                      assignments.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-teal-500 to-green-500 flex items-center justify-center flex-shrink-0">
+                    <BookOpen className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-2">
+                      Subject Expertise
+                    </h5>
+                    <p className="text-gray-600 text-sm">
+                      We cover a wide range of academic subjects and
+                      disciplines, ensuring you get expert help regardless of
+                      your field of study.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-900 mb-2">
+                      Student-Focused Approach
+                    </h5>
+                    <p className="text-gray-600 text-sm">
+                      We prioritize your learning experience and academic
+                      growth, providing guidance that helps you understand
+                      concepts better.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl border border-purple-200">
+              <p className="text-center text-gray-700 leading-relaxed">
+                <strong>Our Commitment:</strong> We are dedicated to helping
+                students achieve academic success through ethical, high-quality
+                assistance. Our team of experienced educators and writers work
+                collaboratively to ensure every student receives personalized
+                support that enhances their learning journey and builds
+                confidence in their academic abilities.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* CTA Section */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-3xl p-8 text-white">

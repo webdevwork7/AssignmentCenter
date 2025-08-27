@@ -14,6 +14,8 @@ import ContactCTA from "@/components/ContactCTA";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatIsAssignmentsCenter from "@/components/WhatIsAssignmentsCenter";
+import FAQ from "@/components/FAQ";
+import AcademicExpertise from "@/components/AcademicExpertise";
 
 const Index = () => {
   // Scroll to top when component mounts
@@ -29,11 +31,13 @@ const Index = () => {
       <WhatIsAssignmentsCenter />
       <WhyChooseUs />
       <HowItWorks />
-      <WorldMap />
-      <SuccessStories />
+      {/* <WorldMap /> */}
+      <AcademicExpertise />
+      {/* <SuccessStories /> */}
       <Testimonials />
       <StatsSection />
       <Services />
+      <FAQ />
       <ContactCTA />
       <ContactForm />
       <Footer />
