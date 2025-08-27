@@ -22,10 +22,9 @@ const ContactForm = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission here
+  const handleSubmit = () => {
+    // FormSubmit will handle the submission
+    // No need to prevent default - let the form submit naturally
   };
 
   const handleChange = (field: string, value: string) => {
@@ -93,9 +92,11 @@ const ContactForm = () => {
                     <MessageCircle className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Live Chat</h4>
+                    <h4 className="font-semibold text-gray-900">
+                      Quick Response
+                    </h4>
                     <p className="text-green-600 font-semibold">
-                      Available 24/7
+                      Within 24 Hours
                     </p>
                   </div>
                 </div>
@@ -114,7 +115,19 @@ const ContactForm = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form
+                action="https://formsubmit.co/webdevwork7@gmail.com"
+                method="POST"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Contact Form Submission - Landing Page"
+                />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label className="text-sm font-medium text-gray-700">
@@ -122,6 +135,7 @@ const ContactForm = () => {
                     </Label>
                     <Input
                       type="text"
+                      name="name"
                       value={formData.name}
                       onChange={(e) => handleChange("name", e.target.value)}
                       className="h-12"
@@ -135,6 +149,7 @@ const ContactForm = () => {
                     </Label>
                     <Input
                       type="email"
+                      name="email"
                       value={formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
                       className="h-12"
@@ -151,6 +166,7 @@ const ContactForm = () => {
                     </Label>
                     <Input
                       type="tel"
+                      name="phone"
                       value={formData.phone}
                       onChange={(e) => handleChange("phone", e.target.value)}
                       className="h-12"
@@ -182,6 +198,11 @@ const ContactForm = () => {
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
+                    <input
+                      type="hidden"
+                      name="subject"
+                      value={formData.subject}
+                    />
                   </div>
                 </div>
 
@@ -190,6 +211,7 @@ const ContactForm = () => {
                     Message
                   </Label>
                   <Textarea
+                    name="message"
                     value={formData.message}
                     onChange={(e) => handleChange("message", e.target.value)}
                     className="min-h-32"

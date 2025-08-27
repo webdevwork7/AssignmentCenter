@@ -240,10 +240,11 @@ const OrderPage = () => {
                     </div>
                     <div className="flex flex-col items-end min-w-[120px]">
                       <div className="font-bold text-green-700 text-xl mb-1">
-                        INR{" "}
+                        ${" "}
                         {(
-                          (item.price || 0) * (item.quantity || 1)
-                        ).toLocaleString("en-IN")}
+                          ((item.price || 0) * (item.quantity || 1)) /
+                          83
+                        ).toLocaleString("en-US", { minimumFractionDigits: 2 })}
                       </div>
                       <div className="text-xs text-gray-400">
                         ({item.quantity || 1} × {item.price || 0} per set)
@@ -254,7 +255,10 @@ const OrderPage = () => {
               </div>
               <div className="flex justify-end items-center gap-4 mb-8">
                 <div className="text-2xl font-extrabold text-purple-700">
-                  Total: INR {total.toLocaleString("en-IN")}
+                  Total: $
+                  {(total / 83).toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                  })}
                 </div>
               </div>
               <form

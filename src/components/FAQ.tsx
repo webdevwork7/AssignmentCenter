@@ -43,7 +43,7 @@ const FAQ = () => {
     {
       question: "Do you provide customer support?",
       answer:
-        "We offer 24/7 customer support through multiple channels including live chat, email, and phone. Our support team is always ready to assist you with any questions or concerns about your assignments.",
+        "We offer 24/7 customer support through multiple channels including email and phone. Our support team is always ready to assist you with any questions or concerns about your assignments.",
     },
     {
       question: "What if I'm not satisfied with the work?",
@@ -138,7 +138,7 @@ const FAQ = () => {
                 Contact Support
               </button>
               <button className="border-2 border-white text-white hover:bg-white hover:text-purple-600 font-bold py-4 px-8 rounded-2xl text-lg transition-colors">
-                Live Chat
+                Contact Us
               </button>
             </div>
           </div>

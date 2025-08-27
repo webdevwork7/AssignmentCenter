@@ -617,15 +617,15 @@ const OrderForm = () => {
               {price.original > 0 && (
                 <div className="flex flex-col items-center justify-center gap-1 mb-4">
                   <div className="text-sm text-gray-400 line-through">
-                    INR{" "}
-                    {price.original.toLocaleString("en-IN", {
+                    ${" "}
+                    {(price.original / 83).toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                     })}
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-3xl font-bold text-green-600">
-                      INR{" "}
-                      {price.discounted.toLocaleString("en-IN", {
+                      ${" "}
+                      {(price.discounted / 83).toLocaleString("en-US", {
                         minimumFractionDigits: 2,
                       })}
                     </span>

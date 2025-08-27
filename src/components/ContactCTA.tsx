@@ -1,7 +1,13 @@
-
-import { Button } from '@/components/ui/button';
-import { Phone, Mail, MessageCircle, ArrowRight, Star, Zap } from 'lucide-react';
-import { siteConfig } from '@/config/site';
+import { Button } from "@/components/ui/button";
+import {
+  Phone,
+  Mail,
+  MessageCircle,
+  ArrowRight,
+  Star,
+  Zap,
+} from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 const ContactCTA = () => {
   return (
@@ -22,17 +28,18 @@ const ContactCTA = () => {
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Get In Touch With Our{' '}
+            Get In Touch With Our{" "}
             <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
               Assignment Experts
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Ready to excel in your studies? Our expert team is available 24/7 to help you achieve academic success.
+            Ready to excel in your studies? Our expert team is available 24/7 to
+            help you achieve academic success.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div className="group">
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-green-100 hover:border-green-200">
               <div className="w-20 h-20 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -42,7 +49,8 @@ const ContactCTA = () => {
                 Call Us Now
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Speak directly with our assignment experts for immediate assistance and personalized guidance.
+                Speak directly with our assignment experts for immediate
+                assistance and personalized guidance.
               </p>
               <div className="text-2xl font-bold text-green-600 mb-6">
                 {siteConfig.phone}
@@ -63,7 +71,8 @@ const ContactCTA = () => {
                 Email Support
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Send us your requirements via email and get detailed responses from our academic professionals.
+                Send us your requirements via email and get detailed responses
+                from our academic professionals.
               </p>
               <div className="text-lg font-bold text-blue-600 mb-6">
                 {siteConfig.email}
@@ -71,28 +80,6 @@ const ContactCTA = () => {
               <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white py-3 shadow-lg">
                 <Mail className="mr-2 h-5 w-5" />
                 Send Email
-              </Button>
-            </div>
-          </div>
-
-          <div className="group">
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-purple-100 hover:border-purple-200">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <MessageCircle className="h-10 w-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
-                Live Chat
-              </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                Get instant responses through our live chat system. Available 24/7 for your convenience.
-              </p>
-              <div className="flex items-center justify-center space-x-2 mb-6">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-lg font-bold text-green-600">Online Now</span>
-              </div>
-              <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 shadow-lg">
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Start Chat
               </Button>
             </div>
           </div>
@@ -107,15 +94,21 @@ const ContactCTA = () => {
           <div className="relative z-10 text-center">
             <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6">
               <Star className="h-6 w-6 text-yellow-300" />
-              <span className="font-semibold">Need Urgent Assignment Help?</span>
+              <span className="font-semibold">
+                Need Urgent Assignment Help?
+              </span>
             </div>
             <h3 className="text-3xl lg:text-4xl font-bold mb-4">
               Don't Wait Until The Last Minute!
             </h3>
             <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Contact us now and let our experts handle your assignments while you focus on other important tasks.
+              Contact us now and let our experts handle your assignments while
+              you focus on other important tasks.
             </p>
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-bold shadow-lg">
+            <Button
+              size="lg"
+              className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-bold shadow-lg"
+            >
               <Phone className="mr-2 h-6 w-6" />
               Get Instant Quote
               <ArrowRight className="ml-2 h-6 w-6" />
