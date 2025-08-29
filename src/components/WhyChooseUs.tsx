@@ -32,9 +32,9 @@ const WhyChooseUs = () => {
     },
     {
       icon: Star,
-      title: "4.9/5 Rating",
+      title: "Quality Guarantee",
       description:
-        "Consistently high ratings from thousands of satisfied students",
+        "Premium quality work with unlimited revisions until satisfaction",
       color: "from-pink-500 to-purple-500",
     },
     {

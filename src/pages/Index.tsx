@@ -5,9 +5,7 @@ import BestAssignmentHelp from "@/components/BestAssignmentHelp";
 // import DiscountSection from '@/components/DiscountSection';
 import WhyChooseUs from "@/components/WhyChooseUs";
 import HowItWorks from "@/components/HowItWorks";
-import WorldMap from "@/components/WorldMap";
-import SuccessStories from "@/components/SuccessStories";
-import Testimonials from "@/components/Testimonials";
+
 import StatsSection from "@/components/StatsSection";
 import Services from "@/components/Services";
 import ContactCTA from "@/components/ContactCTA";
@@ -34,7 +32,7 @@ const Index = () => {
       {/* <WorldMap /> */}
       <AcademicExpertise />
       {/* <SuccessStories /> */}
-      <Testimonials />
+
       <StatsSection />
       <Services />
       <FAQ />
