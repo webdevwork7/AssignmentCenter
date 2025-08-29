@@ -3,6 +3,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Award, Clock, Users, Shield } from "lucide-react";
 
 const BestAssignmentHelp = () => {
+  const scrollToContactForm = () => {
+    const contactSection = document.getElementById("contact-form");
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section className="py-20 rainbow-bg-2">
       <div className="max-w-7xl mx-auto px-4">
@@ -73,6 +83,7 @@ const BestAssignmentHelp = () => {
         <div className="text-center mt-16">
           <Button
             size="lg"
+            onClick={scrollToContactForm}
             className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4"
           >
             Get Expert Help Now

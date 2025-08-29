@@ -1,8 +1,18 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Users, CheckCircle } from "lucide-react";
+import { ArrowRight, Users, CheckCircle } from "lucide-react";
 import OrderForm from "./OrderForm";
 
 const Hero = () => {
+  const scrollToContactForm = () => {
+    const contactSection = document.getElementById("contact-form");
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex flex-col items-center rainbow-bg-1 overflow-hidden pt-32 pb-20 md:flex-row md:items-center">
       {/* Background decorative elements */}
@@ -49,6 +59,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button
                 size="lg"
+                onClick={scrollToContactForm}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg w-full sm:w-auto"
               >
                 Order Now
@@ -57,6 +68,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
+                onClick={scrollToContactForm}
                 className="border-purple-200 text-purple-600 hover:bg-purple-50 px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg w-full sm:w-auto"
               >
                 View Samples

@@ -10,6 +10,16 @@ import {
 import { siteConfig } from "@/config/site";
 
 const ContactCTA = () => {
+  const scrollToContactForm = () => {
+    const contactSection = document.getElementById("contact-form");
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <section className="py-20 rainbow-bg-2 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -107,6 +117,7 @@ const ContactCTA = () => {
             </p>
             <Button
               size="lg"
+              onClick={scrollToContactForm}
               className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-4 text-lg font-bold shadow-lg"
             >
               <Phone className="mr-2 h-6 w-6" />

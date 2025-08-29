@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -6,13 +6,85 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
+import { Phone, Mail, MapPin, Clock, Loader2, Send } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("firstName", formData.firstName);
+      formDataToSend.append("lastName", formData.lastName);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("subject", formData.subject);
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append(
+        "_subject",
+        "New Contact Form Submission - Contact Page"
+      );
+      formDataToSend.append("_captcha", "false");
+      formDataToSend.append("_template", "table");
+
+      const response = await fetch(
+        "https://formsubmit.co/webdevwork7@gmail.com",
+        {
+          method: "POST",
+          body: formDataToSend,
+        }
+      );
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent Successfully! 🎉",
+          description:
+            "Thank you for contacting us. We'll get back to you within 24 hours.",
+          variant: "default",
+        });
+
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast({
+        title: "Error Sending Message",
+        description:
+          "Something went wrong. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
   return (
     <div className="min-h-screen">
@@ -45,25 +117,16 @@ const ContactPage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <form
-                  action="https://formsubmit.co/webdevwork7@gmail.com"
-                  method="POST"
-                  className="space-y-6"
-                >
-                  <input
-                    type="hidden"
-                    name="_subject"
-                    value="New Contact Form Submission - Contact Page"
-                  />
-                  <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_template" value="table" />
-
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName">First Name</Label>
                       <Input
                         id="firstName"
-                        name="firstName"
+                        value={formData.firstName}
+                        onChange={(e) =>
+                          handleChange("firstName", e.target.value)
+                        }
                         placeholder="John"
                         required
                       />
@@ -72,7 +135,10 @@ const ContactPage = () => {
                       <Label htmlFor="lastName">Last Name</Label>
                       <Input
                         id="lastName"
-                        name="lastName"
+                        value={formData.lastName}
+                        onChange={(e) =>
+                          handleChange("lastName", e.target.value)
+                        }
                         placeholder="Doe"
                         required
                       />
@@ -82,8 +148,9 @@ const ContactPage = () => {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
-                      name="email"
                       type="email"
+                      value={formData.email}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       placeholder="john@example.com"
                       required
                     />
@@ -92,7 +159,8 @@ const ContactPage = () => {
                     <Label htmlFor="subject">Subject</Label>
                     <Input
                       id="subject"
-                      name="subject"
+                      value={formData.subject}
+                      onChange={(e) => handleChange("subject", e.target.value)}
                       placeholder="How can we help you?"
                       required
                     />
@@ -101,7 +169,8 @@ const ContactPage = () => {
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
-                      name="message"
+                      value={formData.message}
+                      onChange={(e) => handleChange("message", e.target.value)}
                       placeholder="Tell us about your requirements..."
                       rows={6}
                       required
@@ -109,9 +178,20 @@ const ContactPage = () => {
                   </div>
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white disabled:opacity-50"
                   >
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="ml-2 h-5 w-5" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
